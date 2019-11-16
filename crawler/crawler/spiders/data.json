@@ -1,0 +1,191 @@
+{
+  "data": {
+    "list": [
+      {
+        "id": "107",
+        "name": "Indianartideas",
+        "slug": "",
+        "raised_amount": "0",
+        "market": null,
+        "location": [
+          {
+            "id": "",
+            "text": ""
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "logo_thumb": "https://e27.co/img/no_image.png?path=",
+          "website": ""
+        }
+      },
+      {
+        "id": "328",
+        "name": "LogisticsIndonesia",
+        "slug": "",
+        "raised_amount": "0",
+        "market": null,
+        "location": [
+          {
+            "id": "",
+            "text": ""
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "logo_thumb": "https://e27.co/img/no_image.png?path=",
+          "website": ""
+        }
+      },
+      {
+        "id": "380",
+        "name": "Mondano",
+        "slug": "",
+        "raised_amount": "0",
+        "market": null,
+        "location": [
+          {
+            "id": "",
+            "text": ""
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "logo_thumb": "https://e27.co/img/startups/380/logo_thumb.png",
+          "website": ""
+        }
+      },
+      {
+        "id": "646",
+        "name": "The Wadhwa Group",
+        "slug": "",
+        "raised_amount": "0",
+        "market": null,
+        "location": [
+          {
+            "id": "",
+            "text": ""
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "logo_thumb": "https://e27.co/img/no_image.png?path=",
+          "website": ""
+        }
+      },
+      {
+        "id": "647",
+        "name": "Ads2Publish.com",
+        "slug": "",
+        "raised_amount": "0",
+        "market": null,
+        "location": [
+          {
+            "id": "",
+            "text": ""
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "logo_thumb": "https://e27.co/img/no_image.png?path=",
+          "website": ""
+        }
+      },
+      {
+        "id": "1131",
+        "name": "EZY-Booking.com",
+        "slug": "",
+        "raised_amount": "0",
+        "market": null,
+        "location": [
+          {
+            "id": "",
+            "text": ""
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "logo_thumb": "https://e27.co/img/no_image.png?path=",
+          "website": ""
+        }
+      },
+      {
+        "id": "15861",
+        "name": "01VC",
+        "slug": "01vc",
+        "raised_amount": "0",
+        "market": null,
+        "location": [
+          {
+            "id": "c278",
+            "text": "China"
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "website": "http://www.01vc.com",
+          "short_description": "01VC is laser-focused on investing mobile internet & marketplace startups in their seed / early stages.",
+          "logo_thumb": "https://e27.co/img/startups/15861/logo_thumb.png"
+        }
+      },
+      {
+        "id": "2068",
+        "name": "1.618 PTE LTD",
+        "slug": "1-618-pte-ltd",
+        "raised_amount": "0",
+        "market": null,
+        "location": [
+          {
+            "id": "",
+            "text": ""
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "website": "http://www.qisc.us",
+          "logo_thumb": "https://e27.co/img/startups/2068/logo_thumb.png"
+        }
+      },
+      {
+        "id": "26360",
+        "name": "1 Cloud POS Systems Singapore",
+        "slug": "1-cloud-pos-systems-singapore",
+        "raised_amount": "0",
+        "market": "[[\"Food & Beverage\",\"Retail\",\"Agency & Consulting\"]]",
+        "location": [
+          {
+            "id": "c400",
+            "text": "Singapore"
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "logo_thumb": "https://e27.co/img/startups/26360/logo_thumb.png",
+          "website": "http://www.cloudsystems.com.sg",
+          "short_description": "Provide SAAS service for F&B and retails customers with big data analyst backend engine."
+        }
+      },
+      {
+        "id": "7500",
+        "name": "1-FOR-1 CARD PTE LTD",
+        "slug": "1-for-1-card-pte-ltd",
+        "raised_amount": "0",
+        "market": "[[\"E-commerce\",\"Food & Beverage\",\"Advertising\"]]",
+        "location": [
+          {
+            "id": "c400",
+            "text": "Singapore"
+          }
+        ],
+        "has_been_funded": "0",
+        "metas": {
+          "logo_thumb": "https://e27.co/img/startups/7500/logo-1449474343_thumb.png",
+          "website": "http://www.1for1card.com",
+          "short_description": "1-FOR-1 CARD is a dining privilege membership card that provides members  with 1-for-1 dining offers and other great deals at restaurants across Singapore"
+        }
+      }
+    ],
+    "totalstartupcount": "30497"
+  },
+  "elapsed_time": "0.3249"
+}
