@@ -6,22 +6,19 @@ import csv
 class StartupsSpider(scrapy.Spider):
     name = "startups"
     start_urls = ['https://e27.co/api/startups/?tab_name=recentlyupdated']
-    
+
 
     def parse(self, response):
-        request_body = '&length=20' # here must be variable: totalstartupcount from json file but i don't know how do it right, and i get random number
+        request_body = '&length=30000' 
         url = response.url + request_body
-        yield scrapy.Request(url=url, body=request_body, callback=self.get_page)
+        yield scrapy.Request(url=url, body=request_body, callback=self.get_url)
 
-       
-    def get_page(self, response):
+
+    def get_url(self, response):
         jsonresponse = json.loads(response.body_as_unicode())
-        list_urls = []
         for el in jsonresponse['data']['list']:
-            profile_url = 'https://e27.co/%s' % el['slug'] 
-            list_urls.append(profile_url)
-        with open('urls.csv', 'w') as myfile:
-            write = csv.writer(myfile)
-            for item in list_urls:
-                write.writerow([item])
-        
+            profile_url = 'https://e27.co/{}'.format(el['slug'])
+            with open('urls.csv', 'a+') as csvfile:
+                if [profile_url] not in csvfile:
+                    spamwriter = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+                    spamwriter.writerow([profile_url])
