@@ -1,50 +1,61 @@
 import scrapy
-import json
 import csv
 import random
+import json
 
-class StartupsSpider2(scrapy.Spider):
-    name = "profileinfo"
-    start_urls = ['https://e27.co/api/startups/?tab_name=recentlyupdated']
 
+class ReadSpider(scrapy.Spider):
+    name = 'readspider'
+
+    def start_requests(self):
+        with open('urls.csv', newline='') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+            spamreader = random.sample(list(spamreader), 250)
+            random_urls = []
+            for url in spamreader:
+                url = url[0].split('/')[4]
+                random_urls.append(''.join(url))
+        
+        
+        for slug in random_urls:
+            new_url = 'https://e27.co/api/startups/get/?slug={}&data_type=general'.format(slug)
+            yield scrapy.Request(url=new_url, callback=self.parse)
+    
+    
     def parse(self, response):
-        request_body = '&length=30000'
-        url = response.url + request_body
-        yield scrapy.Request(url=url, body=request_body, callback=self.get_page)
-
-    def get_page(self, response):
         jsonresponse = json.loads(response.body_as_unicode())
-        result_list = jsonresponse['data']['list']
-        result_list = random.sample(result_list, 250)
         list_startups = []
-        for el in result_list:
-            for k,v in el.items():
-                if type(v) == str:
-                    if el[k] == '[[]]':
-                        el[k] = ' '
-        for e in result_list:
-            company_name = e['name']
-            profile_url = 'https://e27.co/{}'.format(e['slug'])
-            company_website_url = e['metas']['website']
-            location = e['location'][0]['text']
-            tags = e['market']
-            totalstartupcount = jsonresponse['data']['totalstartupcount'] #this is number of all profile startups on this site. But i don't know how to convey this value in parce method
-            short_description = e['metas']['short_description']
-            founding_date = ' '
-            founders = ' '
-            employee_range = ' '
-            emails = ' '
-            phones = ' '
-            description = ' '
-            information = {'company_name': company_name, 'profile_url': profile_url, 
-            'company_web_site_url': company_website_url, 'location': location, 'tags': tags, 
-            'short_description': short_description, 'founding_date': founding_date, 'founders': founders,
-            'employee_range': employee_range, 'emails': emails, 'phones': phones, 'description': description}
+        company_name = jsonresponse['data']['name']
+        slug = jsonresponse['data']['slug']
+        profile_url = 'https://e27.co/{}'.format(slug)
+        company_website_url = jsonresponse['data']['metas']['website']
+        location = jsonresponse['data']['location'][0]['text']
+        tags = jsonresponse['data']['market']
+        short_description = jsonresponse['data']['metas']['short_description']
+        description = jsonresponse['data']['metas']['description']
+        founding_month = jsonresponse['data']['metas']['found_month']
+        founding_year = jsonresponse['data']['metas']['found_year']
+        founding_date = (founding_month, founding_year)
+        founders = []
+        employee_range = []
+        email = jsonresponse['data']['metas']['email']
+        linkedin = jsonresponse['data']['metas']['linkedin']
+        twitter = jsonresponse['data']['metas']['twitter']
+        facebook = jsonresponse['data']['metas']['facebook']
+        urls = (linkedin, twitter, facebook)
+        phones = []
+        information = {'company_name': company_name, 'profile_url': profile_url,
+        'company_web_site_url': company_website_url, 'location': location, 'tags': tags,
+        'short_description': short_description, 'description': description,
+        'founding_date': founding_date, 'founders': founders,
+        'employee_range': employee_range, 'urls': urls,
+        'email': email, 'phones': phones, }
 
-            list_startups.append(information)
+        
+        list_startups.append(information)
 
-        keys = list_startups[0].keys()
-        with open('profiles_info.csv', 'w') as myfile:
-            dict_writer = csv.DictWriter(myfile, keys)
-            dict_writer.writeheader()
-            dict_writer.writerows(list_startups)
+        # key = list_startups[0].keys()
+        # with open('profiles_info2.csv', 'w') as myfile:
+        #     dict_writer = csv.DictWriter(myfile, keys)
+        #     dict_writer.writeheader()
+        #     dict_writer.writerows(list_startups)

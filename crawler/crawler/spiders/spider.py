@@ -17,8 +17,9 @@ class StartupsSpider(scrapy.Spider):
     def get_url(self, response):
         jsonresponse = json.loads(response.body_as_unicode())
         for el in jsonresponse['data']['list']:
-            profile_url = 'https://e27.co/{}'.format(el['slug'])
+            profile_url = 'https://e27.co/startups/{}'.format(el['slug'])
             with open('urls.csv', 'a+') as csvfile:
-                if [profile_url] not in csvfile:
+                #if [profile_url] not in csvfile:
                     spamwriter = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
                     spamwriter.writerow([profile_url])
+                
